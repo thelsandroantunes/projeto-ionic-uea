@@ -5,17 +5,12 @@ const router = express.Router();
 const controller = require('../controllers/categoria-controller');
 const auth = require('../middlewares/authenctication');
 
-let _crt = new controller();
+let _ctrl = new controller();
 
-router.get('/', auth, _crt.get);
-
-router.get('/:id', auth, _crt.getById);
-
-router.post('/', auth, _crt.post);
-
-router.put('/:id', auth, _crt.put);
-
-router.delete('/:id', auth, _crt.delete);
-
+router.get('/', auth, _ctrl.get);
+router.get('/:id', auth, _ctrl.getById);
+router.post('/', auth, _ctrl.post);
+router.put('/:id', auth, _ctrl.put);
+router.delete('/:id', auth, _ctrl.delete);
 
 module.exports = router;

@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     let token = req.body.token || req.query.query || req.headers['x-access-token'];
     if (token) {
         try {
-            let decoded = await jwt.verify(token, variables.Security.secretyKey);
+            let decoded = await jwt.verify(token, variables.Security.secretykey);
             req.usuarioLogado = decoded;
             next();
         } catch (error) {

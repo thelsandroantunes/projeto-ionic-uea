@@ -6,7 +6,7 @@ const variables = {
         connection: process.env.connection || 'mongodb+srv://restadmin:rest123@cluster0-mho0h.mongodb.net/restdb'
     },
     Security: {
-        secretyKey: '1fff620ac2147415d67916d297db7b99|9dcecdfcb95428b54715174f5cc6a649'
+        secretykey: '1fff620ac2147415d67916d297db7b99|9dcecdfcb95428b54715174f5cc6a649'
     }
 }
 

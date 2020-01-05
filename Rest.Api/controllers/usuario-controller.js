@@ -26,7 +26,7 @@ usuarioController.prototype.post = async (req, res) => {
     _validationContract.isTrue(req.body.senha != req.body.senhaConfirmacao, 'A Senha e a Confirmação não são iguais');
 
     if (req.body.email) {
-        let usuarioIsEmailExiste = await _repo.IsEmailExiste(req.body.email);
+        let usuarioIsEmailExiste = await _repo.IsEmailExite(req.body.email);
         if (usuarioIsEmailExiste) {
             _validationContract.isTrue((usuarioIsEmailExiste.nome != undefined), `Já existe o e-mail ${req.body.email} cadastrado em nossa base.`);
         }
@@ -47,7 +47,7 @@ usuarioController.prototype.put = async (req, res) => {
     _validationContract.isEmail(req.body.email, 'O e-mail informado é inválido');
     _validationContract.isRequired(req.params.id, 'Informe oId do usuário que será editado');
 
-    let usuarioIsEmailExiste = await _repo.IsEmailExiste(req.body.email);
+    let usuarioIsEmailExiste = await _repo.IsEmailExite(req.body.email);
     if (usuarioIsEmailExiste) {
         _validationContract.isTrue(
             (usuarioIsEmailExiste.nome != undefined) &&
