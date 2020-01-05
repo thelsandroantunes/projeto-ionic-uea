@@ -6,6 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import { SpinnerProvider } from '../providers/spinner/spinner';
+import { AlertProvider } from '../providers/alert/alert';
+import { HttpProvider } from '../providers/http/http';
+import { NetworkProvider } from '../providers/network/network';
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 
 @NgModule({
@@ -26,7 +31,12 @@ import { LoginPage } from '../pages/login/login';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SpinnerProvider,
+    AlertProvider,
+    HttpProvider,
+    NetworkProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule {}
