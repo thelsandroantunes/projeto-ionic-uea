@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { UsuarioProvider } from '../../providers/usuario/usuario';
 
 @IonicPage()
 @Component({
@@ -15,14 +9,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  form: any = {};
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private usuarioSrv: UsuarioProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  async login(): Promise<void> {
+    let result = await this.usuarioSrv.autenticate(this.form.email, this.form.senha);
+    if (result.success) {
+      UsuarioProvider.RegisterLogin(result.data);
+      this.navCtrl.setRoot('CategoriaPage');
+    }
+    console.log(result);
   }
 
-  abrirCategoria(): void{
-    this.navCtrl.setRoot('CategoriaPage');
+  cadastrar(): void {
+    this.navCtrl.setRoot('CadastroPage');
   }
 }
